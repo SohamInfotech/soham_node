@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="/createdata" method="GET">
+
+        name: <input type="text" name="name" value="<%= (editdata) ? editdata.name : '' %>"><br><br>
+        male: <input type="radio" name="gender" value="male" <%= (editdata && editdata.gender === 'male') ? 'checked' : '' %> >
+        female: <input type="radio" name="gender" value="female" <%= (editdata && editdata.gender === 'female') ? 'checked' : '' %> ><br><br>
+
+        hobby: 
+        <input type="checkbox" name="hobby" value="cricket" <%= (editdata && editdata.hobby.includes('cricket')) ? 'checked' : '' %>> cricket
+        <input type="checkbox" name="hobby" value="hocky " <%= (editdata && editdata.hobby.includes('hocky ')) ? 'checked' : '' %>> hocky 
+        <input type="checkbox" name="hobby" value="footbol" <%= (editdata && editdata.hobby.includes('footbol')) ? 'checked' : '' %>> footbol
+        <input type="checkbox" name="hobby" value="kabadi" <%= (editdata && editdata.hobby.includes('kabadi')) ? 'checked' : '' %>> kabadi
+        <input type="checkbox" name="hobby" value="kusti" <%= (editdata && editdata.hobby.includes('kusti')) ? 'checked' : '' %>> kusti
+        <input type="checkbox" name="hobby" value="driving" <%= (editdata && editdata.hobby.includes('driving')) ? 'checked' : '' %>> driving <br><br>
+
+        <select id="dropdown1" name="city">
+            <option value="surat" <%= (editdata && editdata.city === 'surat') ? 'selected' : '' %>>surat</option>
+            <option value="ahemdabad" <%= (editdata && editdata.city === 'ahemdabad') ? 'selected' : '' %>>ahemdabad</option>
+            <option value="vadodra" <%= (editdata && editdata.city === 'vadodra') ? 'selected' : '' %>>vadodra</option>
+            <option value="bhavnagar" <%= (editdata && editdata.city === 'bhavnagar') ? 'selected' : '' %>>bhavnagar</option>
+            <option value="rajkot" <%= (editdata && editdata.city === 'rajkot') ? 'selected' : '' %>>rajkot</option>
+            <option value="mumbai" <%= (editdata && editdata.city === 'mumbai') ? 'selected' : '' %>>mumbai</option>
+        </select>
+
+        <button type="submit">submit</button>
+    </form>
+
+    <table border="1">
+        <tr>
+            <td>no</td>
+            <td>id</td>
+            <td>name</td>
+            <td>gender</td>
+            <td>city</td>
+            <td>hobby</td>
+            <td>Actions</td>
+        </tr>
+        <% result.map((item,ind) => { %>
+            <tr>
+                <td><%= ind+1 %></td>
+                <td><%= item.id %></td>
+                <td><%= item.name %></td>
+                <td><%= item.gender %></td>
+                <td><%= item.city %></td>
+                <td><%= item.hobby %></td>
+                <td>
+                    <button><a href="/deletedata?delet=<%= item.id %>">delete</a></button>
+                    <button><a href="/editdata/<%=item.id %>">edit</a></button>
+                </td>
+            </tr>
+        <% }) %>
+    </table>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+    var a = []
+    a.includes
+</script>
+
+
+<% function totel(item) { const sub1=Number(item.sub1); const sub2=Number(item.sub2); const sub3=Number(item.sub3);
+    const sub4=Number(item.sub4); const sub5=Number(item.sub5); return sub1 + sub2 + sub3 + sub4 + sub5 } %>
+
+    <body>
+        <form action="/formesub">
+            Name:- <input type="text" name="name" value="<%=(formedata!=null)?formedata.name:'' %>">
+            <br>
+            <label for="mal">
+                male:- <input id="mal" checked="true" type="radio" name="Gender" value="male">
+            </label>
+            <label for="fim">
+                female:-
+                <input id="fim" type="radio" name="Gender" value="female">
+            </label>
+            <br>
+            cricket:- <input type="checkbox" name="hobby" value="cricket"
+                <%=(formedata!=null)?(formedata.hobby.includes("cricket")?'checked':""):'' %>>
+            football:- <input type="checkbox" name="hobby" value="football"
+                <%=(formedata!=null)?(formedata.hobby.includes("football")?'checked':""):'' %> >
+            <br>
+            <input type="file" accept="image/*" name="img" required />
+            <br>
+            <input type="submit">
+        </form>
+
+
+        <table border="1px">
+            <tr>
+                <th>Name</th>
+                <th>Gender</th>
+                <th>hobby</th>
+                <th>img name</th>
+                <th>
+                    delete
+                </th>
+                <th>edit</th>
+
+            </tr>
+            <% data.map((item,index)=>{
+                %>
+                <tr>
+                    <td>
+                        <%=item.name %>
+                    </td>
+                    <td>
+                        <%=item.Gender %>
+                    </td>
+                    <td>
+                        <%=(item.hobby)?item.hobby:"not found" %>
+                    </td>
+                    <td>
+                        <%=item.img %>
+                    </td>
+                    <td>
+                        <a href="/dletedat?delete=<%=item.id%>">
+                            <button>
+                                delete
+                            </button>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="/editdata?edit=<%=item.id%>">
+                            <button>
+                                edit
+                            </button>
+                        </a>
+                    </td>
+                </tr>
+                <% }) %>
+        </table>
+    </body>
+
+</html>

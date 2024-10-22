@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<% 
+function total(item) {
+    const sub1 = Number(item.gujrati);
+    const sub2 = Number(item.hindi);
+    const sub3 = Number(item.sci);
+    const sub4 = Number(item.eng);
+    const sub5 = Number(item.sanskrit);
+    return sub1 + sub2 + sub3 + sub4 + sub5;
+}
+%>
+
+    <body>
+        <h1>soham</h1>
+        <form action="/page">
+            name:<input type="text" name="name">
+            gujrati:<input type="number" name="gujrati" min="0" max="100">
+            hindi:<input type="number" name="hindi" min="0" max="100">
+            sci:<input type="number" name="sci" min="0" max="100">
+            eng:<input type="number" name="eng" min="0" max="100">
+            sanskrit:<input type="number" name="sanskrit" min="0" max="100">
+            <input type="submit" name="button">
+        </form>
+        <table border="2px">
+            <tr>
+                <td>name</td>
+                <td>gujrati</td>
+                <td>hindi</td>
+                <td>eng</td>
+                <td>sanskrit</td>
+                <td>sci</td>
+                <td>total</td>
+                <td>pre</td>
+            </tr>
+            <% data.map((item,index)=>{ %>
+                <tr>
+                    <td>
+                        <%=item.name %>
+                    </td>
+                    <td>
+                        <%=item.gujrati %>
+                    </td>
+                    <td>
+                        <%=item.hindi %>
+                    </td>
+                    <td>
+                        <%=item.eng %>
+                    </td>
+                    <td>
+                        <%=item.sanskrit %>
+                    </td>
+                    <td>
+                        <%=item.sci%>
+                    </td>
+                    <td>
+                        <%= total(item)%>
+                    </td>
+                    <td>
+                        <%= total(item)/5%>
+                    </td>                                   
+                    <td>
+                        <a href="/deletedata?delet=<%=index%>"><button>delet</button>  </a>
+                    </td>
+                    <td>
+                        <a href="">
+                            <but></but>
+                        </a>
+                    </td>
+                </tr>
+                <% }) %>
+        </table>
+    </body>
+
+</html>

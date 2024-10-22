@@ -1,0 +1,25 @@
+
+<form action="creatdata">
+    <input type="text" name="f_name">
+    <input type="text" name="l_name">
+    <button type="submit">add</button>
+</form>
+
+<table border="2px">
+    <tr>
+        <td>first-name</td>
+        <td>last-name</td>
+    </tr>
+    <%
+    data.map((iteam,index)=>{
+        %>
+        <tr>
+            <td><%= iteam.f_name %></td>
+            <td><%= iteam.l_name %></td>
+           
+        </tr>
+
+  <%  })
+    %>
+   
+</table>

@@ -1,0 +1,33 @@
+<form action="/createdata">
+    name:- <input type="text" name="name" value="<%=(editdata)?editdata.name:'' %>"><br><br>
+    surname:- <input type="text" name="surname" value="<%= (editdata)?editdata.surname:''  %>"><br><br>
+    age:- <input type="text" name="age" value="<%= (editdata)?editdata.age:''  %>"><br><br>
+    submit:- <input type="submit">
+</form>
+
+<table border="1">
+
+    <tr>
+        <td>name</td>
+        <td>surname</td>
+        <td>age</td>
+        <td>delete</td>
+        <td>update</td>
+    </tr>
+    <% data.map((item,index)=>{
+        %>
+        <tr>
+            <td>
+                <%=item.name%>
+            </td>
+            <td>
+                <%=item.surname%>
+            </td>
+            <td>
+                <%=item.age%>
+            </td>
+            <td><button><a href="deletedata?delet=<%=index%>">delete</a></button></td>
+            <td><button><a href="updetedata?updete=<%=index%>">updete</a></button></td>
+        </tr>
+        <% }) %>
+</table>
